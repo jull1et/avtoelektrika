@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Автоэлектрика с выездом в Алматы</title>
+<meta name="description" content="Сигнализации StarLine и Pandora, автозапуск, Android-магнитолы, камеры и парктроники. Установка с выездом по Алматы, гарантия на работу 5 лет.">
+<meta property="og:title" content="Автоэлектрика с выездом в Алматы">
+<meta property="og:description" content="Сигнализации StarLine и Pandora, автозапуск, Android-магнитолы. Гарантия на работу 5 лет.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jull1et.github.io/avtoelektrika/">
+<meta property="og:image" content="https://jull1et.github.io/avtoelektrika/img/hero-m.jpg">
+<meta property="og:image:width" content="900">
+<meta property="og:image:height" content="601">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#111214">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Onest:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<style>
+/* Тёмная тема по фирменным цветам Антона (его афиши: чёрный + жёлтый). Тема одна, светлой нет намеренно. */
+:root {
+  --bg: #111214;
+  --bg-2: #18191c;
+  --bg-3: #212327;
+  --line: #2c2e33;
+  --text: #f2f1ec;
+  --muted: #a3a49f;
+  --accent: #ffc928;
+  --accent-ink: #17140a;
+  --wa: #25d366;
+  --r: 16px;
+  --display: "Unbounded", "Onest", system-ui, sans-serif;
+  --body: "Onest", system-ui, -apple-system, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body { margin: 0; overflow-x: clip; background: var(--bg); color: var(--text); font: 17px/1.55 var(--body); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 1160px; margin: 0 auto; padding-inline: 16px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 800; letter-spacing: -.02em; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(26px, 4vw, 40px); line-height: 1.12; }
+.lead-text { color: var(--muted); max-width: 40em; margin: 12px 0 0; }
+
+/* Кнопки: все «таблетки» */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font: 600 17px/1 var(--body); padding: 17px 24px; border-radius: 999px; border: 0; cursor: pointer; text-decoration: none; white-space: nowrap; transition: transform .2s cubic-bezier(.16,1,.3,1), filter .2s; }
+.btn i { font-size: 22px; }
+.btn:active { transform: scale(.97); }
+.btn-main { background: var(--accent); color: var(--accent-ink); }
+.btn-main:hover { filter: brightness(1.06); }
+.btn-ghost { background: transparent; color: var(--text); box-shadow: inset 0 0 0 1.5px var(--line); }
+.btn-ghost:hover { box-shadow: inset 0 0 0 1.5px var(--muted); }
+
+/* Плашка макета: защита от того, что макет заберут без оплаты */
+.demo { background: var(--accent); color: var(--accent-ink); text-align: center; font: 600 13.5px/40px var(--body); height: 40px; white-space: nowrap; overflow: hidden; padding: 0 12px; }
+.demo .d-l { display: none; }
+@media (min-width: 700px) { .demo .d-s { display: none; } .demo .d-l { display: inline; } }
+.demo-note { font-size: 14px; color: #4a3d12; margin: 0; }
+
+/* Шапка */
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(17,18,20,.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid transparent; }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 64px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-weight: 800; font-size: 15px; line-height: 1.1; }
+.brand-mark { width: 36px; height: 36px; border-radius: 10px; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-size: 22px; flex: none; }
+.brand small { display: block; font: 500 12px/1.2 var(--body); color: var(--muted); letter-spacing: 0; }
+.nav-r { display: flex; align-items: center; gap: 18px; }
+.nav-phone { font-weight: 700; text-decoration: none; white-space: nowrap; }
+
+/* Первый экран: фото салона во всю ширину, текст слева */
+.hero { position: relative; isolation: isolate; overflow: hidden; display: flex; align-items: center; min-height: min(780px, calc(100svh - 104px)); }
+.hero-photo img { position: absolute; top: 0; right: 0; width: 70%; height: 100%; object-fit: cover; object-position: 60% 50%; z-index: -1; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 42%); mask-image: linear-gradient(to right, transparent 0, #000 42%); }
+.hero > .wrap { width: 100%; }
+.hero-text { max-width: 600px; padding-block: 56px; }
+.hero h1 { font-size: clamp(30px, 3.9vw, 50px); line-height: 1.08; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero p { font-size: 19px; color: #c9c9c3; margin: 20px 0 30px; max-width: 30em; }
+.hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* Полоса фактов */
+.facts { display: grid; grid-template-columns: 1.3fr 1fr 1fr; border-block: 1px solid var(--line); }
+.fact { padding: 26px 24px; display: flex; gap: 16px; align-items: center; }
+.fact + .fact { border-left: 1px solid var(--line); }
+.fact i { font-size: 30px; color: var(--accent); flex: none; }
+.fact b { display: block; font-size: 18px; }
+.fact span { color: var(--muted); font-size: 15px; }
+
+section.block { padding-block: 80px; }
+
+/* Комплекты: горизонтальная лента на телефоне, сетка на ПК */
+.kits { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 36px; }
+.kit { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; display: flex; flex-direction: column; }
+.kit-img { background: var(--bg-3); overflow: hidden; }
+.kit-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .6s cubic-bezier(.16,1,.3,1); }
+.kit:hover .kit-img img { transform: scale(1.04); }
+.poster-link { align-self: flex-start; background: none; border: 0; padding: 0; color: var(--muted); font: 500 14px/1.3 var(--body); text-decoration: underline; text-underline-offset: 3px; cursor: zoom-in; }
+.poster-link:hover { color: var(--text); }
+.kit-body { padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.kit h3 { font-size: 19px; line-height: 1.2; }
+.kit ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; font-size: 15px; color: var(--muted); }
+.kit li { display: flex; gap: 8px; align-items: flex-start; }
+.kit li i { color: var(--accent); margin-top: 3px; flex: none; }
+.price { margin-top: auto; padding-top: 8px; }
+.price b { font-family: var(--display); font-size: 26px; letter-spacing: -.02em; }
+.price span { display: block; font-size: 14px; color: var(--muted); }
+.kit .btn { padding: 14px 18px; font-size: 16px; }
+.note { color: var(--muted); font-size: 14px; margin: 18px 0 0; }
+
+/* Услуги: 4 группы в мозаике */
+.groups { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 36px; }
+.group { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r); padding: 26px; }
+.group.g1 { grid-column: span 4; background: linear-gradient(140deg, #2a2410 0%, var(--bg-2) 55%); border-color: #3b3216; padding: 0; overflow: hidden; display: grid; grid-template-columns: 1.25fr 1fr; }
+.g1 .g-body { padding: 26px; }
+.g1 .g-side { width: 100%; height: 100%; object-fit: cover; min-height: 220px; }
+.g-top { display: block; width: calc(100% + 52px); max-width: none; margin: -26px -26px 22px; aspect-ratio: 16 / 7; object-fit: cover; }
+.group.g2 { grid-column: span 2; }
+.group.g3 { grid-column: span 3; }
+.group.g4 { grid-column: span 3; }
+.group-head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.group-head i { width: 44px; height: 44px; border-radius: 12px; background: var(--bg-3); color: var(--accent); display: grid; place-items: center; font-size: 24px; flex: none; }
+.group.g1 .group-head i { background: var(--accent); color: var(--accent-ink); }
+.group h3 { font-size: 18px; line-height: 1.25; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+.chips li { background: var(--bg-3); border-radius: 12px; padding: 8px 14px; font-size: 15px; }
+.group.g1 .chips li { background: rgba(255,201,40,.12); }
+
+/* Как работаем */
+.steps { list-style: none; padding: 0; margin: 36px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); counter-reset: s; }
+.steps li { counter-increment: s; padding: 0 24px 0 0; position: relative; }
+.steps li::before { content: counter(s); font-family: var(--display); font-weight: 800; font-size: 44px; line-height: 1; color: var(--accent); display: block; margin-bottom: 14px; }
+.steps li + li { padding-left: 24px; border-left: 1px solid var(--line); }
+.steps b { display: block; font-size: 18px; margin-bottom: 6px; }
+.steps span { color: var(--muted); font-size: 15px; }
+
+/* Заявка */
+.order { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; background: var(--accent); color: var(--accent-ink); border-radius: 28px; padding: 44px; }
+.order h2 { color: var(--accent-ink); }
+.order .lead-text { color: #4a3d12; }
+.order-contacts { margin-top: 26px; display: grid; gap: 10px; font-weight: 600; }
+.order-contacts a { text-decoration: none; display: flex; align-items: center; gap: 10px; }
+.order-contacts i { font-size: 22px; }
+form { display: grid; gap: 16px; }
+.field { display: grid; gap: 6px; }
+.field label { font-weight: 600; font-size: 15px; }
+.field input, .field select { width: 100%; font: 400 17px/1.3 var(--body); padding: 15px 16px; border-radius: 14px; border: 1.5px solid transparent; background: #fffaf0; color: #17140a; appearance: none; -webkit-appearance: none; }
+.field select { background-image: linear-gradient(45deg, transparent 50%, #17140a 50%), linear-gradient(135deg, #17140a 50%, transparent 50%); background-position: calc(100% - 22px) 50%, calc(100% - 16px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 44px; }
+.field input::placeholder { color: #7a6f55; }
+.field input:focus, .field select:focus { outline: none; border-color: #17140a; }
+.order .btn-send { background: var(--accent-ink); color: var(--accent); width: 100%; }
+.order .hint { font-size: 14px; color: #4a3d12; margin: 0; }
+
+footer { padding-block: 40px 120px; color: var(--muted); font-size: 14px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+/* Нижняя панель на телефоне */
+.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: none; gap: 10px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(17,18,20,.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid var(--line); transform: translateY(110%); transition: transform .35s cubic-bezier(.16,1,.3,1); }
+.bar.show { transform: none; }
+.bar .btn { flex: 1; min-width: 0; padding: 15px 12px; }
+.bar .btn-call { flex: 0 0 56px; padding: 0; }
+
+/* Просмотр афиши */
+dialog { border: 0; padding: 0; background: transparent; max-width: min(92vw, 560px); max-height: 92vh; }
+dialog::backdrop { background: rgba(5,5,6,.88); }
+dialog img { max-height: 86vh; width: auto; margin: 0 auto; border-radius: 12px; }
+.close { position: fixed; top: 14px; right: 14px; width: 48px; height: 48px; border-radius: 50%; border: 0; background: var(--bg-3); color: var(--text); font-size: 24px; display: grid; place-items: center; cursor: pointer; }
+
+/* Появление при прокрутке */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .hero-text > * { animation: up .8s cubic-bezier(.16,1,.3,1) both; }
+  .hero-text > *:nth-child(2) { animation-delay: .08s; }
+  .hero-text > *:nth-child(3) { animation-delay: .16s; }
+  .hero-photo img { animation: fade 1.2s cubic-bezier(.16,1,.3,1) both; }
+  @keyframes up { from { opacity: 0; transform: translateY(18px); } }
+  @keyframes fade { from { opacity: 0; } }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .bar { transition: none; } }
+
+@media (max-width: 960px) {
+  .hero { display: block; min-height: 0; }
+  .hero-photo img { position: relative; width: 100%; height: auto; aspect-ratio: 4 / 3; object-position: 55% 50%; -webkit-mask-image: linear-gradient(to bottom, #000 50%, transparent 100%); mask-image: linear-gradient(to bottom, #000 50%, transparent 100%); }
+  .hero-text { position: relative; margin-top: -56px; padding-block: 0 40px; }
+  .group.g1 { grid-template-columns: 1fr; }
+  .g1 .g-side { order: -1; aspect-ratio: 16 / 7; min-height: 0; height: auto; }
+  .facts { grid-template-columns: 1fr; }
+  .fact + .fact { border-left: 0; border-top: 1px solid var(--line); }
+  .fact { padding: 18px 0; }
+  .kits { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: -16px; padding: 0 16px 8px; scrollbar-width: none; }
+  .kits::-webkit-scrollbar { display: none; }
+  .kit { flex: 0 0 78%; max-width: 300px; scroll-snap-align: start; }
+  .groups { grid-template-columns: 1fr; }
+  .group.g1, .group.g2, .group.g3, .group.g4 { grid-column: auto; }
+  .order { grid-template-columns: 1fr; padding: 28px 20px; gap: 28px; border-radius: 22px; }
+  section.block { padding-block: 56px; }
+  .bar { display: flex; }
+  .nav-phone { display: none; }
+}
+@media (max-width: 520px) {
+  .steps { grid-template-columns: 1fr; }
+  .steps { gap: 22px; }
+  .steps li, .steps li + li { padding: 0; border-left: 0; display: grid; grid-template-columns: 40px 1fr; column-gap: 12px; }
+  .steps li::before { grid-row: span 2; font-size: 32px; margin: 0; }
+  .steps b { margin-bottom: 2px; }
+  .hero-cta .btn { flex: 1 1 100%; }
+  .brand { font-size: 13px; }
+}
+</style>
+</head>
+<body>
+
+<div class="demo" role="note"><span class="d-s">Макет сайта. Создан Юлией Устьянцевой</span><span class="d-l">Макет сайта для мастера автоэлектрики. Создан Юлией Устьянцевой</span></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="На главную">
+      <span class="brand-mark"><i class="ph-fill ph-lightning"></i></span>
+      <span>Автоэлектрика<small>Алматы, выезд к вам</small></span>
+    </a>
+    <div class="nav-r">
+      <a class="nav-phone js-tel" href="#">+7 747 810 42 33</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <picture class="hero-photo">
+      <source media="(max-width: 960px)" srcset="img/hero-m.jpg">
+      <img src="img/hero.jpg" alt="Салон машины с подсветкой вечером" width="1800" height="1201" fetchpriority="high">
+    </picture>
+    <div class="wrap">
+      <div class="hero-text">
+        <h1>Сигнализации и автоэлектрика <em>с выездом</em> по Алматы</h1>
+        <p>StarLine и Pandora, автозапуск, Android-магнитолы, камеры и парктроники. Ставим, настраиваем и ремонтируем.</p>
+        <div class="hero-cta">
+          <a class="btn btn-main js-wa" href="#" data-msg="Здравствуйте! Хочу узнать про установку"><i class="ph-fill ph-whatsapp-logo"></i>Написать в WhatsApp</a>
+          <a class="btn btn-ghost" href="#kits">Готовые комплекты</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="facts reveal">
+      <div class="fact"><i class="ph-bold ph-map-pin"></i><div><b>Приезжаем к вам</b><span>Дома, у работы или на парковке</span></div></div>
+      <div class="fact"><i class="ph-bold ph-shield-check"></i><div><b>Гарантия 5 лет</b><span>на выполненные работы</span></div></div>
+      <div class="fact"><i class="ph-bold ph-plugs-connected"></i><div><b>Аккуратная проводка</b><span>и качественный монтаж</span></div></div>
+    </div>
+  </div>
+
+  <section class="block" id="kits">
+    <div class="wrap">
+      <h2 class="reveal">Готовые комплекты с установкой</h2>
+      <p class="lead-text reveal">Цена указана вместе с работой.</p>
+      <div class="kits">
+        <article class="kit reveal">
+          <div class="kit-img"><img src="img/kit-e97.jpg" alt="Брелок StarLine в руке" loading="lazy" width="800" height="600"></div>
+          <div class="kit-body">
+            <h3>StarLine E97 LoRa ECO</h3>
+            <ul>
+              <li><i class="ph-bold ph-check"></i>Автозапуск по температуре и времени</li>
+              <li><i class="ph-bold ph-check"></i>Брелок LoRa, дальность до 1 км</li>
+              <li><i class="ph-bold ph-check"></i>Управление по Bluetooth и с телефона</li>
+            </ul>
+            <button class="poster-link js-zoom" type="button" data-src="img/starline-e97.jpg" data-alt="Афиша: StarLine E97 LoRa ECO">Смотреть афишу</button>
+            <div class="price"><b>100 000 ₸</b><span>с установкой</span></div>
+            <a class="btn btn-main js-wa" href="#" data-msg="Здравствуйте! Интересует StarLine E97 с установкой">Хочу этот</a>
+          </div>
+        </article>
+        <article class="kit reveal">
+          <div class="kit-img"><img src="img/kit-a93.jpg" alt="Машину открывают брелоком" loading="lazy" width="800" height="600"></div>
+          <div class="kit-body">
+            <h3>StarLine A93 ECO GSM&nbsp;LTE</h3>
+            <ul>
+              <li><i class="ph-bold ph-check"></i>Охрана от угона и взлома</li>
+              <li><i class="ph-bold ph-check"></i>Управление с телефона через GSM и LTE</li>
+              <li><i class="ph-bold ph-check"></i>GPS / ГЛОНАСС, контроль аккумулятора</li>
+            </ul>
+            <button class="poster-link js-zoom" type="button" data-src="img/starline-a93.jpg" data-alt="Афиша: StarLine A93 ECO GSM LTE">Смотреть афишу</button>
+            <div class="price"><b>120 000 ₸</b><span>с установкой</span></div>
+            <a class="btn btn-main js-wa" href="#" data-msg="Здравствуйте! Интересует StarLine A93 с установкой">Хочу этот</a>
+          </div>
+        </article>
+        <article class="kit reveal">
+          <div class="kit-img"><img src="img/kit-s96.jpg" alt="Кнопка запуска двигателя" loading="lazy" width="800" height="600"></div>
+          <div class="kit-body">
+            <h3>StarLine S96 ECO GSM</h3>
+            <ul>
+              <li><i class="ph-bold ph-check"></i>Без брелока: метка и телефон</li>
+              <li><i class="ph-bold ph-check"></i>GPS / ГЛОНАСС контроль</li>
+              <li><i class="ph-bold ph-check"></i>Автозапуск и климат-контроль</li>
+            </ul>
+            <button class="poster-link js-zoom" type="button" data-src="img/starline-s96.jpg" data-alt="Афиша: StarLine S96 ECO GSM">Смотреть афишу</button>
+            <div class="price"><b>140 000 ₸</b><span>с установкой</span></div>
+            <a class="btn btn-main js-wa" href="#" data-msg="Здравствуйте! Интересует StarLine S96 с установкой">Хочу этот</a>
+          </div>
+        </article>
+        <article class="kit reveal">
+          <div class="kit-img"><img src="img/kit-park.jpg" alt="Машина на подземной парковке" loading="lazy" width="800" height="600"></div>
+          <div class="kit-body">
+            <h3>Парктроники на любой автомобиль</h3>
+            <ul>
+              <li><i class="ph-bold ph-check"></i>Звук при приближении к препятствию</li>
+              <li><i class="ph-bold ph-check"></i>Датчики в цвет: чёрный, белый, серый, серебристый</li>
+            </ul>
+            <button class="poster-link js-zoom" type="button" data-src="img/parktronik.jpg" data-alt="Афиша: Парктроники">Смотреть афишу</button>
+            <div class="price"><b>от 30 000 ₸</b><span>с установкой</span></div>
+            <a class="btn btn-main js-wa" href="#" data-msg="Здравствуйте! Интересуют парктроники с установкой">Хочу этот</a>
+          </div>
+        </article>
+      </div>
+      <p class="note">Не нашли свою модель? Напишите марку и год машины, подберём другой комплект StarLine или Pandora.</p>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:0">
+    <div class="wrap">
+      <h2 class="reveal">Что ещё делаем</h2>
+      <p class="lead-text reveal">Продажа, установка, настройка и ремонт.</p>
+      <div class="groups">
+        <div class="group g1 reveal">
+          <div class="g-body">
+          <div class="group-head"><i class="ph-bold ph-shield-check"></i><h3>Охрана и запуск</h3></div>
+          <ul class="chips">
+            <li>Автосигнализации StarLine и Pandora</li>
+            <li>Автозапуск двигателя</li>
+            <li>Кнопка Start/Stop</li>
+            <li>Продажа и замена брелоков</li>
+            <li>Поиск неисправностей и ремонт сигнализаций</li>
+          </ul>
+          </div>
+          <img class="g-side" src="img/svc-guard.jpg" alt="Чёрный внедорожник ночью на улице" loading="lazy" width="1000" height="667">
+        </div>
+        <div class="group g2 reveal">
+          <div class="group-head"><i class="ph-bold ph-wrench"></i><h3>Диагностика и ремонт</h3></div>
+          <ul class="chips">
+            <li>Компьютерная диагностика</li>
+            <li>Ремонт автоэлектрики</li>
+          </ul>
+        </div>
+        <div class="group g3 reveal">
+          <img class="g-top" src="img/svc-camera.jpg" alt="Экран камеры заднего вида в машине" loading="lazy" width="1000" height="667">
+          <div class="group-head"><i class="ph-bold ph-monitor-play"></i><h3>Магнитолы, камеры, парковка</h3></div>
+          <ul class="chips">
+            <li>Android-магнитолы</li>
+            <li>Камеры заднего вида и 360°</li>
+            <li>Парктроники</li>
+            <li>Видеорегистраторы</li>
+          </ul>
+        </div>
+        <div class="group g4 reveal">
+          <img class="g-top" src="img/svc-rgb.jpg" alt="Салон с цветной подсветкой" loading="lazy" width="1000" height="750">
+          <div class="group-head"><i class="ph-bold ph-sparkle"></i><h3>Комфорт</h3></div>
+          <ul class="chips">
+            <li>Подсветка салона RGB</li>
+            <li>Подогрев зеркал и сидений</li>
+            <li>Доводчики стёкол</li>
+            <li>Защитная сетка в бампер</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:0">
+    <div class="wrap">
+      <h2 class="reveal">Как всё проходит</h2>
+      <ol class="steps reveal">
+        <li><b>Пишете в WhatsApp</b><span>Марка, год машины и что хотите поставить</span></li>
+        <li><b>Подбираем и считаем</b><span>Называем цену до приезда</span></li>
+        <li><b>Приезжаем к вам</b><span>Устанавливаем, настраиваем и показываем, как пользоваться</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="order" style="padding-top:0">
+    <div class="wrap">
+      <div class="order reveal">
+        <div>
+          <h2>Подберём оборудование под вашу машину</h2>
+          <p class="lead-text">Заполните два поля, и сообщение откроется в WhatsApp. Останется нажать «Отправить».</p>
+          <div class="order-contacts">
+            <a class="js-tel" href="#"><i class="ph-bold ph-phone"></i>+7 747 810 42 33</a>
+            <span style="display:flex;align-items:center;gap:10px"><i class="ph-bold ph-map-pin"></i>Алматы, выезд к клиенту</span>
+          </div>
+        </div>
+        <form id="order-form" novalidate>
+          <div class="field">
+            <label for="car">Марка и год машины</label>
+            <input id="car" name="car" type="text" placeholder="Например, Toyota Camry 2018" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="what">Что нужно</label>
+            <select id="what" name="what">
+              <option>Сигнализация, автозапуск</option>
+              <option>Android-магнитола</option>
+              <option>Камера заднего вида или 360°</option>
+              <option>Парктроники</option>
+              <option>Видеорегистратор</option>
+              <option>Подсветка, подогрев, доводчики</option>
+              <option>Диагностика или ремонт электрики</option>
+              <option>Другое, напишу в чате</option>
+            </select>
+          </div>
+          <button class="btn btn-send" type="submit"><i class="ph-fill ph-whatsapp-logo"></i>Отправить в WhatsApp</button>
+          <p class="demo-note">Это макет сайта. Сообщение из макета придёт его автору, а не мастеру. После запуска сайта сообщения будут приходить мастеру.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="wrap">
+  <footer>
+    <span>Автоэлектрика с выездом, Алматы</span>
+    <span>Макет сайта. Создан Юлией Устьянцевой. Фото для примера</span>
+  </footer>
+</div>
+
+<div class="bar" id="bar">
+  <a class="btn btn-main js-wa" href="#" data-msg="Здравствуйте! Хочу узнать про установку"><i class="ph-fill ph-whatsapp-logo"></i>Написать в WhatsApp</a>
+  <a class="btn btn-ghost btn-call js-tel" href="#" aria-label="Позвонить"><i class="ph-bold ph-phone"></i></a>
+</div>
+
+<dialog id="viewer" aria-label="Афиша">
+  <button class="close" type="button" aria-label="Закрыть"><i class="ph-bold ph-x"></i></button>
+  <img id="viewer-img" alt="">
+</dialog>
+
+<script>
+// Макет: WhatsApp ведёт на Юлию (автора), номер мастера виден, но не нажимается.
+// После оплаты: DEMO = false, убрать div.demo и подпись .demo-note.
+const DEMO = true;
+const PHONE_OWNER = "77478104233";   // Антон
+const PHONE_AUTHOR = "77017591615";  // Юлия
+const PHONE = DEMO ? PHONE_AUTHOR : PHONE_OWNER;
+const wa = msg => "https://api.whatsapp.com/send?phone=" + PHONE + "&text=" + encodeURIComponent(msg);
+
+document.querySelectorAll(".js-wa").forEach(a => { a.href = wa(a.dataset.msg); a.target = "_blank"; a.rel = "noopener"; });
+document.querySelectorAll(".js-tel").forEach(a => {
+  if (!DEMO) { a.href = "tel:+" + PHONE_OWNER; return; }
+  if (a.classList.contains("btn-call")) { a.remove(); return; }
+  a.removeAttribute("href"); a.style.cursor = "default";
+});
+
+document.getElementById("order-form").addEventListener("submit", e => {
+  e.preventDefault();
+  const car = document.getElementById("car").value.trim();
+  const what = document.getElementById("what").value;
+  let msg = "Здравствуйте! Нужно: " + what + ".";
+  if (car) msg += " Машина: " + car + ".";
+  window.open(wa(msg), "_blank", "noopener");
+});
+
+// Просмотр афиши
+const dlg = document.getElementById("viewer"), dImg = document.getElementById("viewer-img");
+document.querySelectorAll(".js-zoom").forEach(b => b.addEventListener("click", () => {
+  dImg.src = b.dataset.src; dImg.alt = b.dataset.alt; dlg.showModal();
+}));
+dlg.addEventListener("click", e => { if (e.target !== dImg) dlg.close(); });
+
+// Появление блоков и нижняя панель после первого экрана
+const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } }), { threshold: .15 });
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+const bar = document.getElementById("bar");
+// Панель видна после первого экрана, но прячется у формы заявки, чтобы не дублировать кнопку
+const seen = { hero: true, order: false };
+const upd = () => bar.classList.toggle("show", !seen.hero && !seen.order);
+new IntersectionObserver(([en]) => { seen.hero = en.isIntersecting; upd(); }).observe(document.querySelector(".hero-cta"));
+new IntersectionObserver(([en]) => { seen.order = en.isIntersecting; upd(); }, { threshold: .25 }).observe(document.getElementById("order"));
+</script>
+</body>
+</html>
