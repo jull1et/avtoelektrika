@@ -9,164 +9,154 @@
 <meta property="og:description" content="Сигнализации StarLine и Pandora, автозапуск, Android-магнитолы. Гарантия на работу 5 лет.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jull1et.github.io/avtoelektrika/">
-<meta property="og:image" content="https://jull1et.github.io/avtoelektrika/img/hero-m.jpg">
+<meta property="og:image" content="https://jull1et.github.io/avtoelektrika/img/hero-m-v2.jpg">
 <meta property="og:image:width" content="900">
-<meta property="og:image:height" content="601">
-<meta name="theme-color" content="#f47a1f">
+<meta property="og:image:height" content="720">
+<meta name="theme-color" content="#f7801f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Onest:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
 <style>
-/* Оранжевая тема по афишам Антона: оранжевый фон, тёмные «плашки» (как чёрные блоки на афишах), жёлтый акцент только на тёмном. */
+/* Оранжевая тема по афишам Антона: оранжевый фон, тёплые белые карточки, чёрный текст и кнопки. Фото тёплые (закат, дневной свет), чтобы сочетались с фоном. */
 :root {
-  --bg: #f47a1f;
-  --bg-hi: #ff9d3a;
-  --ink: #17110c;
-  --ink-2: #3d2310;
-  --line: rgba(23,17,12,.2);
-  --panel: #18120d;
-  --panel-2: #241b14;
-  --panel-line: #34291f;
-  --on-panel: #f7efe5;
-  --on-panel-2: #bcae9e;
-  --cream: #fff3e4;
-  --accent: #ffd23f;
-  --accent-ink: #17110c;
-  --r: 18px;
+  --bg: #f7801f;
+  --bg-hi: #ff9b3d;
+  --card: #fff8f0;
+  --card-2: #fbeee0;
+  --ink: #1a120a;
+  --ink-2: #4a2c12;
+  --muted: #6e5440;
+  --line: rgba(26,18,10,.16);
+  --deep: #c9530a;
+  --r: 22px;
   --display: "Unbounded", "Onest", system-ui, sans-serif;
   --body: "Onest", system-ui, -apple-system, sans-serif;
   color-scheme: light;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 76px; }
-body { margin: 0; overflow-x: clip; background: var(--bg) linear-gradient(180deg, var(--bg-hi) 0, var(--bg) 640px) no-repeat; color: var(--ink); font: 17px/1.55 var(--body); -webkit-font-smoothing: antialiased; }
+body { margin: 0; overflow-x: clip; background: var(--bg) linear-gradient(180deg, var(--bg-hi) 0, var(--bg) 720px) no-repeat; color: var(--ink); font: 17px/1.55 var(--body); -webkit-font-smoothing: antialiased; }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
 [hidden] { display: none !important; }
 :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
-.hero-card :focus-visible, .kit :focus-visible, .order :focus-visible, .bar :focus-visible, dialog :focus-visible { outline-color: var(--accent); }
 .wrap { max-width: 1160px; margin: 0 auto; padding-inline: 16px; }
 h1, h2, h3 { font-family: var(--display); font-weight: 800; letter-spacing: -.02em; margin: 0; text-wrap: balance; }
 h2 { font-size: clamp(26px, 4vw, 42px); line-height: 1.1; }
 .lead-text { color: var(--ink-2); max-width: 40em; margin: 12px 0 0; font-size: 18px; }
 
-/* Кнопки: все «таблетки», стоят только на тёмных плашках */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font: 600 17px/1 var(--body); padding: 17px 24px; border-radius: 999px; border: 0; cursor: pointer; text-decoration: none; white-space: nowrap; transition: transform .2s cubic-bezier(.16,1,.3,1), filter .2s; }
+/* Кнопки: «таблетки». Главная чёрная, вторая белая */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font: 600 17px/1 var(--body); padding: 18px 26px; border-radius: 999px; border: 0; cursor: pointer; text-decoration: none; white-space: nowrap; transition: transform .2s cubic-bezier(.16,1,.3,1), background-color .2s; }
 .btn i { font-size: 22px; }
 .btn:active { transform: scale(.97); }
-.btn-main { background: var(--accent); color: var(--accent-ink); }
-.btn-main:hover { filter: brightness(1.06); }
-.btn-ghost { background: transparent; color: var(--on-panel); box-shadow: inset 0 0 0 1.5px rgba(247,239,229,.28); }
-.btn-ghost:hover { box-shadow: inset 0 0 0 1.5px rgba(247,239,229,.6); }
+.btn-main { background: var(--ink); color: #fff; }
+.btn-main:hover { background: #33230f; }
+.btn-ghost { background: var(--card); color: var(--ink); }
+.btn-ghost:hover { background: #fff; }
 
 /* Шапка */
-.nav { position: sticky; top: 0; z-index: 20; background: rgba(250,140,46,.9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(252,141,46,.9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
 .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 64px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-weight: 800; font-size: 15px; line-height: 1.1; }
-.brand-mark { width: 36px; height: 36px; border-radius: 10px; background: var(--panel); color: var(--accent); display: grid; place-items: center; font-size: 22px; flex: none; }
+.brand-mark { width: 36px; height: 36px; border-radius: 10px; background: var(--ink); color: var(--bg-hi); display: grid; place-items: center; font-size: 22px; flex: none; }
 .brand small { display: block; font: 500 12px/1.2 var(--body); color: var(--ink-2); letter-spacing: 0; }
-.nav-phone { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; text-decoration: none; white-space: nowrap; background: var(--panel); color: var(--on-panel); padding: 10px 16px; border-radius: 999px; }
-.nav-phone i { color: var(--accent); font-size: 18px; }
+.nav-phone { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; text-decoration: none; white-space: nowrap; background: var(--ink); color: #fff; padding: 11px 18px; border-radius: 999px; }
+.nav-phone i { font-size: 18px; }
 
-/* Первый экран: тёмная плашка с фото салона, текст слева */
-.hero { padding-top: 8px; }
-.hero-card { position: relative; isolation: isolate; overflow: hidden; background: var(--panel); color: var(--on-panel); border-radius: 28px; display: flex; align-items: center; min-height: min(660px, calc(100svh - 96px)); box-shadow: 0 30px 60px -30px rgba(80,30,0,.55); }
-.hero-photo img { position: absolute; top: 0; right: 0; width: 66%; height: 100%; object-fit: cover; object-position: 60% 50%; z-index: -1; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 40%); mask-image: linear-gradient(to right, transparent 0, #000 40%); }
-.hero-text { max-width: 600px; padding: 56px 48px; }
-.hero h1 { font-size: clamp(30px, 3.9vw, 50px); line-height: 1.08; }
-.hero h1 em { font-style: normal; color: var(--accent); }
-.hero p { font-size: 19px; color: #d6cabd; margin: 20px 0 30px; max-width: 30em; }
+/* Первый экран: текст на оранжевом слева, фото заката справа */
+.hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: center; padding-block: 40px 56px; min-height: min(700px, calc(100svh - 64px)); }
+.hero h1 { font-size: clamp(30px, 3.9vw, 52px); line-height: 1.08; }
+.hero h1 em { font-style: normal; color: #fff; background: var(--ink); padding: 0 .22em .04em; border-radius: .22em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.hero p { font-size: 19px; color: var(--ink-2); margin: 20px 0 30px; max-width: 30em; }
 .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-photo img { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; object-position: 40% 60%; border-radius: 28px; box-shadow: 0 40px 70px -40px rgba(90,35,0,.7); }
 
-/* Полоса фактов на оранжевом */
-.facts { display: grid; grid-template-columns: 1.3fr 1fr 1fr; margin-top: 8px; }
-.fact { padding: 28px 24px; display: flex; gap: 16px; align-items: center; }
+/* Факты: белая полоса из трёх колонок */
+.facts { display: grid; grid-template-columns: 1.3fr 1fr 1fr; background: var(--card); border-radius: var(--r); }
+.fact { padding: 26px 24px; display: flex; gap: 16px; align-items: center; }
 .fact + .fact { border-left: 1px solid var(--line); }
-.fact i { width: 52px; height: 52px; border-radius: 50%; background: var(--panel); color: var(--accent); display: grid; place-items: center; font-size: 26px; flex: none; }
+.fact i { width: 50px; height: 50px; border-radius: 50%; background: var(--bg); color: var(--ink); display: grid; place-items: center; font-size: 25px; flex: none; }
 .fact b { display: block; font-size: 18px; }
-.fact span { color: var(--ink-2); font-size: 15px; }
+.fact span { color: var(--muted); font-size: 15px; }
 
 section.block { padding-block: 72px; }
 
-/* Комплекты: тёмные карточки, лента на телефоне, сетка на ПК */
+/* Комплекты: белые карточки */
 .kits { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 36px; }
-.kit { background: var(--panel); color: var(--on-panel); border-radius: var(--r); overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 24px 40px -28px rgba(80,30,0,.6); }
-.kit-img { background: var(--panel-2); overflow: hidden; }
+.kit { background: var(--card); border-radius: var(--r); overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 24px 40px -30px rgba(90,35,0,.55); }
+.kit-img { overflow: hidden; background: var(--card-2); }
 .kit-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .6s cubic-bezier(.16,1,.3,1); }
 .kit:hover .kit-img img { transform: scale(1.04); }
-.poster-link { align-self: flex-start; background: none; border: 0; padding: 0; color: var(--on-panel-2); font: 500 14px/1.3 var(--body); text-decoration: underline; text-underline-offset: 3px; cursor: zoom-in; }
-.poster-link:hover { color: var(--on-panel); }
+.poster-link { align-self: flex-start; background: none; border: 0; padding: 0; color: var(--muted); font: 500 14px/1.3 var(--body); text-decoration: underline; text-underline-offset: 3px; cursor: zoom-in; }
+.poster-link:hover { color: var(--ink); }
 .kit-body { padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .kit h3 { font-size: 19px; line-height: 1.2; }
-.kit ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; font-size: 15px; color: var(--on-panel-2); }
+.kit ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; font-size: 15px; color: var(--muted); }
 .kit li { display: flex; gap: 8px; align-items: flex-start; }
-.kit li i { color: var(--accent); margin-top: 3px; flex: none; }
+.kit li i { color: var(--deep); margin-top: 3px; flex: none; }
 .price { margin-top: auto; padding-top: 8px; }
-.price b { font-family: var(--display); font-size: 26px; letter-spacing: -.02em; color: var(--accent); }
-.price span { display: block; font-size: 14px; color: var(--on-panel-2); }
+.price b { font-family: var(--display); font-size: 26px; letter-spacing: -.02em; color: var(--ink); }
+.price span { display: block; font-size: 14px; color: var(--muted); }
 .kit .btn { padding: 14px 18px; font-size: 16px; }
 .note { color: var(--ink-2); font-size: 15px; margin: 18px 0 0; }
 
-/* Услуги: мозаика из тёмных плашек и одной светлой */
+/* Услуги: мозаика из белых карточек с фото и одной чёрной */
 .groups { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 36px; }
-.group { background: var(--panel); color: var(--on-panel); border-radius: var(--r); padding: 26px; overflow: hidden; }
-.group.g1 { grid-column: span 4; padding: 0; display: grid; grid-template-columns: 1.25fr 1fr; }
+.group { background: var(--card); border-radius: var(--r); padding: 26px; overflow: hidden; }
+.group.g1 { grid-column: span 4; padding: 0; display: grid; grid-template-columns: 1.2fr 1fr; }
 .g1 .g-body { padding: 26px; }
-.g1 .g-side { width: 100%; height: 100%; object-fit: cover; min-height: 220px; }
+.g1 .g-side { width: 100%; height: 100%; object-fit: cover; min-height: 240px; }
 .g-top { display: block; width: calc(100% + 52px); max-width: none; margin: -26px -26px 22px; aspect-ratio: 16 / 7; object-fit: cover; }
-.group.g2 { grid-column: span 2; background: var(--cream); color: var(--ink); }
+.group.g2 { grid-column: span 2; background: var(--ink); color: #fff; }
 .group.g3 { grid-column: span 3; }
 .group.g4 { grid-column: span 3; }
 .group-head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-.group-head i { width: 44px; height: 44px; border-radius: 12px; background: var(--panel-2); color: var(--accent); display: grid; place-items: center; font-size: 24px; flex: none; }
-.group.g1 .group-head i { background: var(--accent); color: var(--accent-ink); }
-.group.g2 .group-head i { background: var(--panel); }
+.group-head i { width: 44px; height: 44px; border-radius: 12px; background: var(--bg); color: var(--ink); display: grid; place-items: center; font-size: 24px; flex: none; }
 .group h3 { font-size: 18px; line-height: 1.25; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
-.chips li { background: rgba(247,239,229,.08); border-radius: 12px; padding: 8px 14px; font-size: 15px; }
-.group.g1 .chips li { background: rgba(255,210,63,.13); }
-.group.g2 .chips li { background: rgba(23,17,12,.07); }
+.chips li { background: var(--card-2); border-radius: 12px; padding: 8px 14px; font-size: 15px; }
+.group.g2 .chips li { background: rgba(255,255,255,.1); }
 
 /* Как работаем */
 .steps { list-style: none; padding: 0; margin: 36px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); counter-reset: s; }
 .steps li { counter-increment: s; padding: 0 24px 0 0; position: relative; }
-.steps li::before { content: counter(s); font-family: var(--display); font-weight: 800; font-size: 26px; line-height: 1; width: 56px; height: 56px; border-radius: 50%; background: var(--panel); color: var(--accent); display: grid; place-items: center; margin-bottom: 16px; }
+.steps li::before { content: counter(s); font-family: var(--display); font-weight: 800; font-size: 24px; line-height: 1; width: 56px; height: 56px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; margin-bottom: 16px; }
 .steps li + li { padding-left: 24px; border-left: 1px solid var(--line); }
 .steps b { display: block; font-size: 18px; margin-bottom: 6px; }
 .steps span { color: var(--ink-2); font-size: 15px; }
 
-/* Заявка: тёмная плашка */
-.order { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; background: var(--panel); color: var(--on-panel); border-radius: 28px; padding: 44px; box-shadow: 0 30px 60px -30px rgba(80,30,0,.55); }
-.order .lead-text { color: var(--on-panel-2); }
+/* Заявка: белая карточка */
+.order { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; background: var(--card); border-radius: 28px; padding: 44px; box-shadow: 0 30px 60px -40px rgba(90,35,0,.6); }
+.order .lead-text { color: var(--muted); }
 .order-contacts { margin-top: 26px; display: grid; gap: 10px; font-weight: 600; }
 .order-contacts a, .order-contacts span { text-decoration: none; display: flex; align-items: center; gap: 10px; }
-.order-contacts i { font-size: 22px; color: var(--accent); }
+.order-contacts i { font-size: 20px; width: 40px; height: 40px; border-radius: 50%; background: var(--bg); display: grid; place-items: center; }
 form { display: grid; gap: 16px; }
 .field { display: grid; gap: 6px; }
 .field label { font-weight: 600; font-size: 15px; }
-.field input, .field select { width: 100%; font: 400 17px/1.3 var(--body); padding: 15px 16px; border-radius: 14px; border: 1.5px solid transparent; background: var(--cream); color: var(--ink); appearance: none; -webkit-appearance: none; }
+.field input, .field select { width: 100%; font: 400 17px/1.3 var(--body); padding: 15px 16px; border-radius: 14px; border: 1.5px solid #e7d4c0; background: #fff; color: var(--ink); appearance: none; -webkit-appearance: none; }
 .field select { background-image: linear-gradient(45deg, transparent 50%, var(--ink) 50%), linear-gradient(135deg, var(--ink) 50%, transparent 50%); background-position: calc(100% - 22px) 50%, calc(100% - 16px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 44px; }
-.field input::placeholder { color: #806b56; }
-.field input:focus, .field select:focus { outline: none; border-color: var(--accent); }
-.order .btn-send { width: 100%; background: var(--accent); color: var(--accent-ink); }
-.order .hint { font-size: 14px; color: var(--on-panel-2); margin: 0; }
+.field input::placeholder { color: #8a735f; }
+.field input:focus, .field select:focus { outline: none; border-color: var(--ink); }
+.order .btn-send { width: 100%; background: var(--ink); color: #fff; }
+.order .hint { font-size: 14px; color: var(--muted); margin: 0; }
 
 footer { padding-block: 40px 120px; color: var(--ink-2); font-size: 15px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 footer a { font-weight: 700; text-decoration: none; color: var(--ink); }
 
 /* Нижняя панель на телефоне */
-.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: none; gap: 10px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(24,18,13,.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); transform: translateY(110%); transition: transform .35s cubic-bezier(.16,1,.3,1); }
+.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: none; gap: 10px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(255,248,240,.95); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 -10px 30px -20px rgba(90,35,0,.5); transform: translateY(110%); transition: transform .35s cubic-bezier(.16,1,.3,1); }
 .bar.show { transform: none; }
 .bar .btn { flex: 1; min-width: 0; padding: 15px 12px; }
-.bar .btn-call { flex: 0 0 56px; padding: 0; }
+.bar .btn-call { flex: 0 0 56px; padding: 0; background: var(--bg); }
 
 /* Просмотр афиши */
 dialog { border: 0; padding: 0; background: transparent; max-width: min(92vw, 560px); max-height: 92vh; }
-dialog::backdrop { background: rgba(14,9,5,.9); }
+dialog::backdrop { background: rgba(20,10,2,.88); }
 dialog img { max-height: 86vh; width: auto; margin: 0 auto; border-radius: 12px; }
-.close { position: fixed; top: 14px; right: 14px; width: 48px; height: 48px; border-radius: 50%; border: 0; background: var(--panel-2); color: var(--on-panel); font-size: 24px; display: grid; place-items: center; cursor: pointer; }
+.close { position: fixed; top: 14px; right: 14px; width: 48px; height: 48px; border-radius: 50%; border: 0; background: var(--card); color: var(--ink); font-size: 24px; display: grid; place-items: center; cursor: pointer; }
 
 /* Появление при прокрутке */
 @media (prefers-reduced-motion: no-preference) {
@@ -175,22 +165,22 @@ dialog img { max-height: 86vh; width: auto; margin: 0 auto; border-radius: 12px;
   .hero-text > * { animation: up .8s cubic-bezier(.16,1,.3,1) both; }
   .hero-text > *:nth-child(2) { animation-delay: .08s; }
   .hero-text > *:nth-child(3) { animation-delay: .16s; }
-  .hero-photo img { animation: fade 1.2s cubic-bezier(.16,1,.3,1) both; }
+  .hero-photo img { animation: rise 1s .1s cubic-bezier(.16,1,.3,1) both; }
   @keyframes up { from { opacity: 0; transform: translateY(18px); } }
-  @keyframes fade { from { opacity: 0; } }
+  @keyframes rise { from { opacity: 0; transform: translateY(24px) scale(.98); } }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .bar { transition: none; } }
 
 @media (max-width: 960px) {
-  .hero-card { display: block; min-height: 0; border-radius: 24px; }
-  .hero-photo img { position: relative; width: 100%; height: auto; aspect-ratio: 4 / 3; object-position: 55% 50%; -webkit-mask-image: linear-gradient(to bottom, #000 50%, transparent 100%); mask-image: linear-gradient(to bottom, #000 50%, transparent 100%); }
-  .hero-text { position: relative; margin-top: -56px; padding: 0 20px 28px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 24px; min-height: 0; padding-block: 16px 40px; }
+  .hero-photo { order: -1; }
+  .hero-photo img { aspect-ratio: 4 / 3; border-radius: 22px; }
   .group.g1 { grid-template-columns: 1fr; }
-  .g1 .g-side { order: -1; aspect-ratio: 16 / 7; min-height: 0; height: auto; }
-  .facts { grid-template-columns: 1fr; }
+  .g1 .g-side { order: -1; aspect-ratio: 16 / 8; min-height: 0; height: auto; }
+  .facts { grid-template-columns: 1fr; padding-inline: 18px; }
   .fact + .fact { border-left: 0; border-top: 1px solid var(--line); }
   .fact { padding: 16px 0; }
-  .kits { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: -16px; padding: 0 16px 16px; scrollbar-width: none; }
+  .kits { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: -16px; padding: 0 16px 20px; scrollbar-width: none; }
   .kits::-webkit-scrollbar { display: none; }
   .kit { flex: 0 0 78%; max-width: 300px; scroll-snap-align: start; }
   .groups { grid-template-columns: 1fr; }
@@ -203,10 +193,10 @@ dialog img { max-height: 86vh; width: auto; margin: 0 auto; border-radius: 12px;
 @media (max-width: 520px) {
   .steps { grid-template-columns: 1fr; gap: 20px; }
   .steps li, .steps li + li { padding: 0; border-left: 0; display: grid; grid-template-columns: 48px 1fr; column-gap: 14px; }
-  .steps li::before { grid-row: span 2; width: 44px; height: 44px; font-size: 20px; margin: 0; }
+  .steps li::before { grid-row: span 2; width: 44px; height: 44px; font-size: 19px; margin: 0; }
   .steps b { margin-bottom: 2px; }
   .hero-cta .btn { flex: 1 1 100%; }
-  .hero h1 { font-size: 27px; }
+  .hero h1 { font-size: 28px; }
   .brand { font-size: 13px; }
 }
 </style>
@@ -227,21 +217,19 @@ dialog img { max-height: 86vh; width: auto; margin: 0 auto; border-radius: 12px;
 
 <main id="top">
   <section class="hero">
-    <div class="wrap">
-      <div class="hero-card">
-        <picture class="hero-photo">
-          <source media="(max-width: 960px)" srcset="img/hero-m.jpg">
-          <img src="img/hero.jpg" alt="Салон машины с подсветкой вечером" width="1800" height="1201" fetchpriority="high">
-        </picture>
-        <div class="hero-text">
-          <h1>Сигнализации&nbsp;и автоэлектрика <em>с выездом</em> по&nbsp;Алматы</h1>
-          <p>StarLine и Pandora, автозапуск, Android-магнитолы, камеры и парктроники. Ставим, настраиваем и ремонтируем.</p>
-          <div class="hero-cta">
-            <a class="btn btn-main js-wa" href="#" data-msg="Здравствуйте! Хочу узнать про установку"><i class="ph-fill ph-whatsapp-logo"></i>Написать в WhatsApp</a>
-            <a class="btn btn-ghost" href="#kits">Готовые комплекты</a>
-          </div>
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <h1>Сигнализации&nbsp;и автоэлектрика <em>с выездом</em> по&nbsp;Алматы</h1>
+        <p>StarLine и Pandora, автозапуск, Android-магнитолы, камеры и парктроники. Ставим, настраиваем и ремонтируем.</p>
+        <div class="hero-cta">
+          <a class="btn btn-main js-wa" href="#" data-msg="Здравствуйте! Хочу узнать про установку"><i class="ph-fill ph-whatsapp-logo"></i>Написать в WhatsApp</a>
+          <a class="btn btn-ghost" href="#kits">Готовые комплекты</a>
         </div>
       </div>
+      <picture class="hero-photo">
+        <source media="(max-width: 960px)" srcset="img/hero-m-v2.jpg" width="900" height="720">
+        <img src="img/hero-v2.jpg" alt="Белый внедорожник на закате" width="1600" height="1280" fetchpriority="high">
+      </picture>
     </div>
   </section>
 
@@ -259,7 +247,7 @@ dialog img { max-height: 86vh; width: auto; margin: 0 auto; border-radius: 12px;
       <p class="lead-text reveal">Цена указана вместе с работой.</p>
       <div class="kits">
         <article class="kit reveal">
-          <div class="kit-img"><img src="img/kit-e97.jpg" alt="Брелок StarLine в руке" loading="lazy" width="800" height="600"></div>
+          <div class="kit-img"><img src="img/kit-e97-v2.jpg" alt="Брелок сигнализации в руке" loading="lazy" width="800" height="600"></div>
           <div class="kit-body">
             <h3>StarLine E97 LoRa ECO</h3>
             <ul>
@@ -273,7 +261,7 @@ dialog img { max-height: 86vh; width: auto; margin: 0 auto; border-radius: 12px;
           </div>
         </article>
         <article class="kit reveal">
-          <div class="kit-img"><img src="img/kit-a93.jpg" alt="Машину открывают брелоком" loading="lazy" width="800" height="600"></div>
+          <div class="kit-img"><img src="img/kit-a93-v2.jpg" alt="Внедорожник на закате" loading="lazy" width="800" height="600"></div>
           <div class="kit-body">
             <h3>StarLine A93 ECO GSM&nbsp;LTE</h3>
             <ul>
@@ -287,7 +275,7 @@ dialog img { max-height: 86vh; width: auto; margin: 0 auto; border-radius: 12px;
           </div>
         </article>
         <article class="kit reveal">
-          <div class="kit-img"><img src="img/kit-s96.jpg" alt="Кнопка запуска двигателя" loading="lazy" width="800" height="600"></div>
+          <div class="kit-img"><img src="img/kit-s96-v2.jpg" alt="Водитель запускает двигатель" loading="lazy" width="800" height="600"></div>
           <div class="kit-body">
             <h3>StarLine S96 ECO GSM</h3>
             <ul>
@@ -301,7 +289,7 @@ dialog img { max-height: 86vh; width: auto; margin: 0 auto; border-radius: 12px;
           </div>
         </article>
         <article class="kit reveal">
-          <div class="kit-img"><img src="img/kit-park.jpg" alt="Машина на подземной парковке" loading="lazy" width="800" height="600"></div>
+          <div class="kit-img"><img src="img/kit-park-v2.jpg" alt="Внедорожник сзади на дороге" loading="lazy" width="800" height="600"></div>
           <div class="kit-body">
             <h3>Парктроники на любой автомобиль</h3>
             <ul>
@@ -334,9 +322,10 @@ dialog img { max-height: 86vh; width: auto; margin: 0 auto; border-radius: 12px;
             <li>Поиск неисправностей и ремонт сигнализаций</li>
           </ul>
           </div>
-          <img class="g-side" src="img/svc-guard.jpg" alt="Чёрный внедорожник ночью на улице" loading="lazy" width="1000" height="667">
+          <img class="g-side" src="img/svc-guard-v2.jpg" alt="Белый внедорожник на горной дороге" loading="lazy" width="1000" height="667">
         </div>
         <div class="group g2 reveal">
+          <img class="g-top" src="img/svc-repair-v2.jpg" alt="Мастер чинит электрику в моторном отсеке" loading="lazy" width="800" height="533">
           <div class="group-head"><i class="ph-bold ph-wrench"></i><h3>Диагностика и ремонт</h3></div>
           <ul class="chips">
             <li>Компьютерная диагностика</li>
@@ -344,7 +333,7 @@ dialog img { max-height: 86vh; width: auto; margin: 0 auto; border-radius: 12px;
           </ul>
         </div>
         <div class="group g3 reveal">
-          <img class="g-top" src="img/svc-camera.jpg" alt="Экран камеры заднего вида в машине" loading="lazy" width="1000" height="667">
+          <img class="g-top" src="img/svc-camera-v2.jpg" alt="Экран магнитолы в машине" loading="lazy" width="1000" height="667">
           <div class="group-head"><i class="ph-bold ph-monitor-play"></i><h3>Магнитолы, камеры, парковка</h3></div>
           <ul class="chips">
             <li>Android-магнитолы</li>
@@ -354,7 +343,7 @@ dialog img { max-height: 86vh; width: auto; margin: 0 auto; border-radius: 12px;
           </ul>
         </div>
         <div class="group g4 reveal">
-          <img class="g-top" src="img/svc-rgb.jpg" alt="Салон с цветной подсветкой" loading="lazy" width="1000" height="750">
+          <img class="g-top" src="img/svc-rgb-v2.jpg" alt="Салон машины в солнечном свете" loading="lazy" width="1000" height="750">
           <div class="group-head"><i class="ph-bold ph-sparkle"></i><h3>Комфорт</h3></div>
           <ul class="chips">
             <li>Подсветка салона RGB</li>
