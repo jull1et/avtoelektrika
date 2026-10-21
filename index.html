@@ -16,7 +16,7 @@
 <meta name="theme-color" content="#ffee00">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Onest:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Onest:wght@400;500;600;700&family=Fira+Sans+Extra+Condensed:wght@900&display=swap">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
 <style>
@@ -75,16 +75,17 @@ h2 { font-size: clamp(26px, 4vw, 42px); line-height: 1.1; }
 .nav-phone { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; text-decoration: none; white-space: nowrap; background: var(--red); color: #fff; padding: 10px 16px; border-radius: 999px; }
 .nav-phone i { color: var(--accent); font-size: 18px; }
 
-/* Первый экран: светлый, текст слева, яркое фото справа */
-.hero { padding-top: 12px; }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 530px) minmax(0, 1fr); gap: 40px; align-items: center; min-height: min(620px, calc(100svh - 96px)); }
-.hero h1 { font-size: clamp(30px, 3.4vw, 42px); line-height: 1.1; }
-.hero h1 em { font-style: normal; display: inline-block; background: var(--red); color: #fff; padding: .04em .32em .1em; border-radius: 10px; transform: rotate(-2deg); margin-top: .12em; box-shadow: 0 10px 20px -12px rgba(140,0,0,.7); }
-.hero p { font-size: 19px; color: var(--ink-2); margin: 22px 0 30px; max-width: 30em; }
-.hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+/* Первый экран по просьбе Антона: сверху по центру крупный заголовок заглавными, под ним коллаж его работ, ниже текст и кнопки.
+   Заголовок узким жирным шрифтом, как на его афишах: широкий Unbounded заглавными на телефоне влезает только мелко. */
+.hero { padding-top: 24px; }
+.hero-stack { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.hero h1 { font-family: "Fira Sans Extra Condensed", var(--display); font-weight: 900; text-transform: uppercase; letter-spacing: .01em; font-size: clamp(38px, 5.6vw, 76px); line-height: 1; }
+.hero h1 em { font-style: normal; display: inline-block; background: var(--red); color: #fff; padding: .04em .3em .06em; border-radius: 12px; transform: rotate(-2deg); margin-top: .1em; box-shadow: 0 10px 20px -12px rgba(140,0,0,.7); }
+.hero p { font-size: 19px; color: var(--ink-2); margin: 26px auto; max-width: 34em; }
+.hero-cta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 /* Коллаж работ Антона: показываем целиком, слегка наклонён, как наклейка на афише */
-.hero-photo { position: relative; display: flex; justify-content: center; padding-block: 16px; }
-.hero-photo img { width: auto; max-width: 100%; height: min(640px, calc(100svh - 130px)); object-fit: contain; border-radius: 22px; border: 6px solid #fff; box-shadow: 0 30px 60px -30px rgba(90,70,0,.7); transform: rotate(2deg); }
+.hero-photo { position: relative; display: flex; justify-content: center; margin-top: 28px; }
+.hero-photo img { width: auto; max-width: 100%; height: clamp(320px, calc(100svh - 470px), 540px); object-fit: contain; border-radius: 22px; border: 6px solid #fff; box-shadow: 0 30px 60px -30px rgba(90,70,0,.7); transform: rotate(2deg); }
 
 /* Полоса фактов */
 .facts { display: grid; grid-template-columns: 1.3fr 1fr 1fr; margin-top: 8px; }
@@ -175,21 +176,18 @@ dialog img { max-height: 88vh; width: auto; margin: 0 auto; border-radius: 14px;
 @media (prefers-reduced-motion: no-preference) {
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
   .reveal.in { opacity: 1; transform: none; }
-  .hero-text > * { animation: up .8s cubic-bezier(.16,1,.3,1) both; }
-  .hero-text > *:nth-child(2) { animation-delay: .08s; }
-  .hero-text > *:nth-child(3) { animation-delay: .16s; }
-  .hero-photo img { animation: fade 1.2s cubic-bezier(.16,1,.3,1) both; }
+  .hero-stack > * { animation: up .8s cubic-bezier(.16,1,.3,1) both; }
+  .hero-stack > *:nth-child(2) { animation-delay: .08s; }
+  .hero-stack > *:nth-child(3) { animation-delay: .16s; }
   @keyframes up { from { opacity: 0; transform: translateY(18px); } }
-  @keyframes fade { from { opacity: 0; } }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .bar { transition: none; } }
 
 @media (max-width: 960px) {
-  .hero-grid { grid-template-columns: 1fr; gap: 22px; min-height: 0; }
-  .hero-photo { order: -1; }
-  .hero-photo { padding-block: 0; }
-  .hero-photo img { width: 100%; height: auto; border-width: 4px; border-radius: 18px; transform: none; }
-  .hero p { margin: 16px 0 24px; }
+  .hero { padding-top: 18px; }
+  .hero-photo { margin-top: 20px; }
+  .hero-photo img { width: 100%; max-width: 460px; height: auto; border-width: 4px; border-radius: 18px; transform: none; }
+  .hero p { margin: 20px auto 22px; }
   .facts { grid-template-columns: 1fr; }
   .fact + .fact { border-left: 0; border-top: 1px solid var(--line); }
   .fact { padding: 16px 0; }
@@ -208,7 +206,7 @@ dialog img { max-height: 88vh; width: auto; margin: 0 auto; border-radius: 14px;
   .steps li::before { grid-row: span 2; width: 44px; height: 44px; font-size: 20px; margin: 0; }
   .steps b { margin-bottom: 2px; }
   .hero-cta .btn { flex: 1 1 100%; }
-  .hero h1 { font-size: 27px; }
+  .hero h1 { font-size: min(38px, 10.6vw); }
   .hero p { font-size: 17px; }
   .brand { font-size: 16px; }
 }
@@ -230,17 +228,17 @@ dialog img { max-height: 88vh; width: auto; margin: 0 auto; border-radius: 14px;
 
 <main id="top">
   <section class="hero">
-    <div class="wrap hero-grid">
+    <div class="wrap hero-stack">
+      <h1>Установка, продажа и&nbsp;ремонт автосигнализаций <em>по&nbsp;Алматы</em></h1>
+      <div class="hero-photo">
+        <img src="img/kollazh.jpg" alt="Наши работы: установка автосигнализаций StarLine любой сложности, опыт 25 лет" width="987" height="1410" fetchpriority="high">
+      </div>
       <div class="hero-text">
-        <h1>Установка, продажа и&nbsp;ремонт автосигнализаций <em>по&nbsp;Алматы</em></h1>
         <p>StarLine и Pandora, автозапуск, Android-магнитолы, камеры и парктроники. Работаем с выездом к вам.</p>
         <div class="hero-cta">
           <a class="btn btn-wa js-wa" href="#" data-msg="Здравствуйте! Хочу узнать про установку"><i class="ph-fill ph-whatsapp-logo"></i>Написать в WhatsApp</a>
           <a class="btn btn-white" href="#kits">Готовые комплекты</a>
         </div>
-      </div>
-      <div class="hero-photo">
-        <img src="img/kollazh.jpg" alt="Наши работы: установка автосигнализаций StarLine любой сложности, опыт 25 лет" width="987" height="1410" fetchpriority="high">
       </div>
     </div>
   </section>
